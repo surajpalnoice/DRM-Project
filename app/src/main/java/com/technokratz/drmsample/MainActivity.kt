@@ -14,6 +14,7 @@ import com.google.android.exoplayer2.util.EventLogger
 import com.google.android.exoplayer2.util.Util
 import com.technokratz.drmsample.databinding.ActivityMainBinding
 import java.util.*
+import kotlin.collections.HashMap
 
 class MainActivity : AppCompatActivity() {
 
@@ -108,11 +109,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getMediaSource(): MediaSource {
+        val requestHeader = HashMap<String, String>()
+        requestHeader["pallycon-customdata-v2"] = "eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0LW1wMyIsImRybV90eXBlIjoid2lkZXZpbmUiLCJzaXRlX2lkIjoiOE5RSiIsImhhc2giOiJFRkJCV29tcHZiLzJqSTJJUjd4cU5zQkFBM2dBZndUVWVYQmFZQ0dwQnM0PSIsImNpZCI6ImZpbGVfZXhhbXBsZV9NUDNfNzAwS0IiLCJwb2xpY3kiOiIyUjd1czdCQzZIYW14eEw0QnVyUXFqckpkS3V6dHk3YTg0cHRmajZqbkhJPSIsInRpbWVzdGFtcCI6IjIwMjMtMDEtMTJUMTQ6MjA6NDhaIn0="
+
         val drmConfiguration = MediaItem.DrmConfiguration.Builder(C.WIDEVINE_UUID)
             .setLicenseUri("https://license-global.pallycon.com/ri/licenseManager.do")
-            .setLicenseRequestHeaders(mutableMapOf(
-                "eyJrZXlfcm90YXRpb24iOmZhbHNlLCJyZXNwb25zZV9mb3JtYXQiOiJvcmlnaW5hbCIsInVzZXJfaWQiOiJ0ZXN0LW1wMyIsImRybV90eXBlIjoid2lkZXZpbmUiLCJzaXRlX2lkIjoiOE5RSiIsImhhc2giOiJGd295UDlXRXQ2SFRMRHZLeE1vZWhMVUFWdTFIb3h1VEdhN2hJTEFadVFZPSIsImNpZCI6ImZpbGVfZXhhbXBsZV9NUDNfNzAwS0IiLCJwb2xpY3kiOiIyUjd1czdCQzZIYW14eEw0QnVyUXFqckpkS3V6dHk3YTg0cHRmajZqbkhJPSIsInRpbWVzdGFtcCI6IjIwMjMtMDEtMTJUMTM6MDI6NTVaIn0=" to "pallycon-customdata-v2",
-            ))
+            .setMultiSession(true)
+            .setLicenseRequestHeaders(requestHeader)
             .build()
 
         //val songUrl = "https://storage.googleapis.com/noice-prod-content/transcoded/content-audio-1662243457449.m3u8"
