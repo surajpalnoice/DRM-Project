@@ -60,13 +60,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-service:$lifecycle"
 
     //Exoplayer
-    implementation files('libs/library_hls_2_17_1.aar')
     implementation files('libs/PallyconWVMSDK.aar')
     implementation "com.google.android.exoplayer:extension-ima:$exoplayer_version"
     implementation "com.google.android.exoplayer:extension-cronet:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
     implementation "com.google.android.exoplayer:extension-mediasession:$exoplayer_version"
+    api "com.google.android.exoplayer:exoplayer-hls:$exoplayer_version"
     implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer_version"
 
     // Gson
